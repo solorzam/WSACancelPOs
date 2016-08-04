@@ -1,0 +1,9 @@
+C:\MyApplication\Console\WSAClient\bin\Debug\WSAClient.exe.config
+C:\MyApplication\Console\WSAClient\bin\Debug\WSAClient.exe
+C:\MyApplication\Console\WSAClient\bin\Debug\WSAClient.pdb
+C:\MyApplication\Console\WSAClient\obj\Debug\WSAClient.exe
+C:\MyApplication\Console\WSAClient\obj\Debug\WSAClient.pdb
+C:\MyApplication\Console\WSAClient\obj\Debug\WSAClient.csprojResolveAssemblyReference.cache
+C:\MyApplication\Console\WSACancelPOs\bin\Debug\WSAClient.exe.config
+C:\MyApplication\Console\WSACancelPOs\obj\Debug\WSAClient.exe
+C:\MyApplication\Console\WSACancelPOs\obj\Debug\WSAClient.pdb

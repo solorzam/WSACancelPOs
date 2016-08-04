@@ -1,0 +1,1478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SetPurchaseOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="purchaseOrderRequest" type="tns:PurchaseOrderRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PurchaseOrderRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PurchaseOrder" type="tns:clsPurchaseOrder" />
+          <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="tns:clsAuthentication" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="clsPurchaseOrder">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="purchaseordernumber" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="customerporeference" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fulfillmenttype" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="purchaseorderdate" type="s:date" />
+          <s:element minOccurs="1" maxOccurs="1" name="requestedshipdate" type="s:date" />
+          <s:element minOccurs="1" maxOccurs="1" name="customernumber" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="customername" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="storeid" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StoreName" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="b2bstoreid" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="b2b" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddressChange" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProductCode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="comment" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="shipping" nillable="true" type="tns:clsShipping" />
+          <s:element minOccurs="1" maxOccurs="1" name="shipthrough" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="email" nillable="true" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="details" type="tns:ArrayOfPurchaseOrderItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="clsShipping">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="contactname" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="contactphone" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="shiptoattn" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="shiptoaddress1" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="shiptoaddress2" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="shiptocity" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="shiptostate" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="shiptozip" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="shiptocountry" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPurchaseOrderItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="lineitem" nillable="true" type="tns:PurchaseOrderItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PurchaseOrderItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IMSI" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ICCID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="lineno" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="itemcode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="itemcodeanddescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="quantity" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="phonecategory" type="tns:PhoneCategoryType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Priority" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShippingInstruction" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AreaCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tag" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="PhoneCategoryType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Cold" />
+          <s:enumeration value="Hot" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="clsAuthentication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetPurchaseOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetPurchaseOrderResult" type="tns:PurchaseOrderResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PurchaseOrderResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PurchaseOrderNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FulfillmentOrderUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serviceRequest" type="tns:FulfillmentsRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FulfillmentsRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserCredentials" type="tns:UserCredentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="FulfillmentOrder" type="tns:FulfillmentUpdate" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserCredentials">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FulfillmentUpdate">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FulfillmentNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="contactname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="address1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="address2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="zip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="contactphone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="shipvia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="comments" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FulfillmentItems" type="tns:ArrayOfFulfillmentItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFulfillmentItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FulfillmentItem" nillable="true" type="tns:FulfillmentItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FulfillmentItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="sku" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="mdnnumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="linenumber" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FulfillmentOrderUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FulfillmentOrderUpdateResult" type="tns:FulfillmentsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FulfillmentsResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ReturnCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CancelFulfillment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fulfillmentRequest" type="tns:PurchaseOrderInfoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PurchaseOrderInfoRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PurchaseOrderNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="tns:clsAuthentication" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CancelFulfillmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CancelFulfillmentResult" type="tns:CancelPurchaseOrderResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CancelPurchaseOrderResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="setPurchaseOrderPayment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fulfillmentRequest" type="tns:PurchaseOrderInfoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setPurchaseOrderPaymentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="setPurchaseOrderPaymentResult" type="tns:PurchaseOrderPaymentResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PurchaseOrderPaymentResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetApprovedShippingMethods">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="shipByRequest" type="tns:ShippByRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ShippByRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserCredential" type="tns:clsAuthentication" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetApprovedShippingMethodsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetApprovedShippingMethodsResult" type="tns:ShippByResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ShippByResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ShipByList" type="tns:ArrayOfShipBy" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfShipBy">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ShipBy" nillable="true" type="tns:ShipBy" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ShipBy">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ShipByCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShipByText" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetShippingCodes">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetShippingCodesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetShippingCodesResult" type="tns:ShippByResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="iv_product_stock_list">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="productStatusRequest" type="tns:ProductStockRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ProductStockRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="tns:clsAuthentication" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="iv_product_stock_listResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iv_product_stock_listResult" type="tns:ProductsStockResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ProductsStockResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ProductStockList" type="tns:ArrayOfProductStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfProductStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ProductStatus" nillable="true" type="tns:ProductStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ProductStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ItemSKU" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerItemSKU" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="QTYOnHand" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="QTYAllocated" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="QTYAvailable" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="QTYDefective" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="BQTY" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CQTY" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="iv_product_stock_info">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="productStatusRequest" type="tns:ProductStockInfoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ProductStockInfoRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ItemCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="tns:clsAuthentication" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="iv_product_stock_infoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iv_product_stock_infoResult" type="tns:ProductStockResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ProductStockResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ProductStockInfo" type="tns:ProductStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Get_ESN_Shipping_Report">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="purchaseOrderRequest" type="tns:PurchaseOrderSearchCriteria" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PurchaseOrderSearchCriteria">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PurchaseOrderNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:PurchaseOrderStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="ESN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MSL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrackingNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PO_To_Date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PO_From_Date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Shipp_From_Date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Shipp_To_Date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="tns:clsAuthentication" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="PurchaseOrderStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="Pending" />
+          <s:enumeration value="Processed" />
+          <s:enumeration value="Shipped" />
+          <s:enumeration value="Closed" />
+          <s:enumeration value="Return" />
+          <s:enumeration value="PendingApproval" />
+          <s:enumeration value="Approved" />
+          <s:enumeration value="Rejected" />
+          <s:enumeration value="Cancelled" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="Get_ESN_Shipping_ReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_ESN_Shipping_ReportResult" type="tns:EsnShippingReportResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EsnShippingReportResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EsnShippingList" type="tns:ArrayOfEsnShippingReports" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEsnShippingReports">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EsnShippingReports" nillable="true" type="tns:EsnShippingReports" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EsnShippingReports">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ESN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MSL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OTKSL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ICCID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IMSI" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ITEMCODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PurchaseOrderNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrackingNumbe" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Get_RMA_Report">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rmaRequest" type="tns:RMASearchCriteria" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RMASearchCriteria">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RMANumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RMAStatus" type="tns:RMAStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="ESN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReturnReason" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RMA_To_Date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="RMA_From_Date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="tns:clsAuthentication" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="RMAStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="Pending" />
+          <s:enumeration value="Received" />
+          <s:enumeration value="PendingForRepair" />
+          <s:enumeration value="PendingForCredit" />
+          <s:enumeration value="PendingForReplacement" />
+          <s:enumeration value="Approved" />
+          <s:enumeration value="Returned" />
+          <s:enumeration value="Credited" />
+          <s:enumeration value="Denied" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="Get_RMA_ReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_RMA_ReportResult" type="tns:RMAResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RMAResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RmaReportList" type="tns:ArrayOfRMAReport" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRMAReport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RMAReport" nillable="true" type="tns:RMAReport" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RMAReport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RMANumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RMADate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="SKU" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ESN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DefectReason" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSANotes" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FulfillmentOrdersProvisionalList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="poRequest" type="tns:FulfillmentReportRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FulfillmentReportRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TrackingNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FulfillmentOrderStatus" type="tns:PurchaseOrderStatus" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShipFromDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShipToDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FulfillmentFromDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FulfillmentToDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="FulfillmentNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="tns:clsAuthentication" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FulfillmentOrdersProvisionalListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FulfillmentOrdersProvisionalListResult" type="tns:FulfillmentReportResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FulfillmentReportResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ReturnCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FulfillmentOrderList" type="tns:ArrayOfFulfillmentOrdersProvisional" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFulfillmentOrdersProvisional">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FulfillmentOrdersProvisional" nillable="true" type="tns:FulfillmentOrdersProvisional" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FulfillmentOrdersProvisional">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="FulfillmentOrderNumber" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SaleOrderNumber" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StoreID" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TrackingNumber" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProductCode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ESN" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IMSI" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ICCID" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UPC" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MSLNumber" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FulfillmentOrdersListWithHeader">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="poRequest" type="tns:FulfillmentReportRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FulfillmentOrdersListWithHeaderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FulfillmentOrdersListWithHeaderResult" type="tns:FulfillmentOrderWithHeaderResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FulfillmentOrderWithHeaderResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ReturnCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FulfillmentOrderList" type="tns:ArrayOfFulfillmentOrdersListWithHeader" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFulfillmentOrdersListWithHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FulfillmentOrdersListWithHeader" nillable="true" type="tns:FulfillmentOrdersListWithHeader" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FulfillmentOrdersListWithHeader">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="FulfillmentOrderDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FulfillmentOrderNumber" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SaleOrderNumber" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StoreID" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TrackingNumber" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CustomerAccountNumber" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContactName" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShipBy" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShipAddress" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShipCity" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShipState" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShipZip" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProductCode" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FulfillmentOrdersListItems">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="poRequest" type="tns:FulfillmentReportRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FulfillmentOrdersListItemsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FulfillmentOrdersListItemsResult" type="tns:FulfillmentOrderListItemsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FulfillmentOrderListItemsResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ReturnCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FulfillmentOrderList" type="tns:ArrayOfFulfillmentOrdersListItems" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFulfillmentOrdersListItems">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FulfillmentOrdersListItems" nillable="true" type="tns:FulfillmentOrdersListItems" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FulfillmentOrdersListItems">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IMSI" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ICCID" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PassCode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MSID" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MDN" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FulfillmentOrderNumber" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SaleOrderNumber" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StoreID" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TrackingNumber" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProductCode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ESN" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UPC" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MSLNumber" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SprintMVNOInventory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="inventoryRequest" type="tns:SprintInventoryRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SprintInventoryRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="tns:clsAuthentication" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SprintMVNOInventoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SprintMVNOInventoryResult" type="tns:SprintInventoryResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SprintInventoryResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="InventoryList" type="tns:ArrayOfSprintInventory" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSprintInventory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SprintInventory" nillable="true" type="tns:SprintInventory" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SprintInventory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SKU" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="InventoryQuantity" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetInventoryList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="inventoryRequest" type="tns:InventoryRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="InventoryRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="tns:clsAuthentication" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetInventoryListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInventoryListResult" type="tns:InventoryResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="InventoryResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="InventoryList" type="tns:ArrayOfInventorySKU" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInventorySKU">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InventorySKU" nillable="true" type="tns:InventorySKU" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InventorySKU">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SKU" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Technology" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ModelNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Color" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Brand" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CategoryName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetInventoryReceiptList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="inventoryReceiptRequest" type="tns:InventoryReceiptSearchCriteria" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="InventoryReceiptSearchCriteria">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Receipt_From_Date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Receipt_To_Date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="tns:clsAuthentication" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetInventoryReceiptListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInventoryReceiptListResult" type="tns:InventoryReceiptResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="InventoryReceiptResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ItemTransactionList" type="tns:ArrayOfItemReceiptTransactions" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfItemReceiptTransactions">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ItemReceiptTransactions" nillable="true" type="tns:ItemReceiptTransactions" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ItemReceiptTransactions">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeviceSKU" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SKU" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUSTOMERSKU" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ESNMEID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrxDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrxType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerReferenceNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OriginTrx" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPurchaseOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="purchaseOrderRequest" type="tns:PurchaseOrderInfoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPurchaseOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPurchaseOrderResult" type="tns:PurchaseOrderInfoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PurchaseOrderInfoResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PurchaseOrder" type="tns:clsPurchaseOrder" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFulfillmentOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fulfillmentOrder" type="tns:FulfillmentOrderRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FulfillmentOrderRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PurchaseOrderNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="tns:clsAuthentication" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFulfillmentOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFulfillmentOrderResult" type="tns:FulfillmentOrderResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FulfillmentOrderResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PurchaseOrder" type="tns:FulfillmentOrder" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FulfillmentOrder">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BasePurchaseOrder" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BasePurchaseOrder">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="customername" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="purchaseordernumber" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="purchaseorderdate" type="s:date" />
+          <s:element minOccurs="1" maxOccurs="1" name="storeid" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="comment" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProductCode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="shipping" nillable="true" type="tns:clsShipping" />
+          <s:element minOccurs="1" maxOccurs="1" name="shiptracking" nillable="true" type="tns:ShipTracking" />
+          <s:element minOccurs="1" maxOccurs="1" name="email" nillable="true" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="details" type="tns:ArrayOfBasePurchaseOrderItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ShipTracking">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="shiptoby" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="trackingnumber" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="deliverystatus" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="trackinglink" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBasePurchaseOrderItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="lineitem" nillable="true" type="tns:BasePurchaseOrderItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BasePurchaseOrderItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IMSI" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ICCID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="lineno" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="itemcode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="quantity" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="upc" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fmupc" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="esn" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="mdnnumber" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="mslnumber" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="otksl" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="phonecategory" type="tns:PhoneCategoryType" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PurchaseOrderProvisioning">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="purchaseOrderProvisioningRequest" type="tns:PurchaseOrderProvisioningRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PurchaseOrderProvisioningRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ProvisioningInfo" type="tns:PurchaseOrderProvisioning" />
+          <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="tns:clsAuthentication" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PurchaseOrderProvisioning">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="esn" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="mdnnumber" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="msid" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="mslnumber" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="passcode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fmupc" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PurchaseOrderProvisioningResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PurchaseOrderProvisioningResult" type="tns:PurchaseOrderProvisioningResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PurchaseOrderProvisioningResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CheckOrderShippingStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="purchaseOrderShipRequest" type="tns:PurchaseOrderShipRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PurchaseOrderShipRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PurchaseOrderNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Authentication" type="tns:clsAuthentication" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CheckOrderShippingStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckOrderShippingStatusResult" type="tns:PurchaseOrderShipResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PurchaseOrderShipResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ShipInfo" type="tns:ShipTracking" />
+          <s:element minOccurs="0" maxOccurs="1" name="shipmenttrackingdetails" type="tns:ArrayOfShipmentTrackingEvents" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfShipmentTrackingEvents">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="shipmenttrackingevent" nillable="true" type="tns:ShipmentTrackingEvents" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ShipmentTrackingEvents">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EventTimeStamp" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventStatusExceptionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventStatusExceptionDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventStateOrProvince" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventCountryName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventArrivalLocation" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SetPurchaseOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:SetPurchaseOrder" />
+  </wsdl:message>
+  <wsdl:message name="SetPurchaseOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:SetPurchaseOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="FulfillmentOrderUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:FulfillmentOrderUpdate" />
+  </wsdl:message>
+  <wsdl:message name="FulfillmentOrderUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:FulfillmentOrderUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelFulfillmentSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelFulfillment" />
+  </wsdl:message>
+  <wsdl:message name="CancelFulfillmentSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelFulfillmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="setPurchaseOrderPaymentSoapIn">
+    <wsdl:part name="parameters" element="tns:setPurchaseOrderPayment" />
+  </wsdl:message>
+  <wsdl:message name="setPurchaseOrderPaymentSoapOut">
+    <wsdl:part name="parameters" element="tns:setPurchaseOrderPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetApprovedShippingMethodsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetApprovedShippingMethods" />
+  </wsdl:message>
+  <wsdl:message name="GetApprovedShippingMethodsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetApprovedShippingMethodsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetShippingCodesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetShippingCodes" />
+  </wsdl:message>
+  <wsdl:message name="GetShippingCodesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetShippingCodesResponse" />
+  </wsdl:message>
+  <wsdl:message name="iv_product_stock_listSoapIn">
+    <wsdl:part name="parameters" element="tns:iv_product_stock_list" />
+  </wsdl:message>
+  <wsdl:message name="iv_product_stock_listSoapOut">
+    <wsdl:part name="parameters" element="tns:iv_product_stock_listResponse" />
+  </wsdl:message>
+  <wsdl:message name="iv_product_stock_infoSoapIn">
+    <wsdl:part name="parameters" element="tns:iv_product_stock_info" />
+  </wsdl:message>
+  <wsdl:message name="iv_product_stock_infoSoapOut">
+    <wsdl:part name="parameters" element="tns:iv_product_stock_infoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_ESN_Shipping_ReportSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_ESN_Shipping_Report" />
+  </wsdl:message>
+  <wsdl:message name="Get_ESN_Shipping_ReportSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_ESN_Shipping_ReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_RMA_ReportSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_RMA_Report" />
+  </wsdl:message>
+  <wsdl:message name="Get_RMA_ReportSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_RMA_ReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="FulfillmentOrdersProvisionalListSoapIn">
+    <wsdl:part name="parameters" element="tns:FulfillmentOrdersProvisionalList" />
+  </wsdl:message>
+  <wsdl:message name="FulfillmentOrdersProvisionalListSoapOut">
+    <wsdl:part name="parameters" element="tns:FulfillmentOrdersProvisionalListResponse" />
+  </wsdl:message>
+  <wsdl:message name="FulfillmentOrdersListWithHeaderSoapIn">
+    <wsdl:part name="parameters" element="tns:FulfillmentOrdersListWithHeader" />
+  </wsdl:message>
+  <wsdl:message name="FulfillmentOrdersListWithHeaderSoapOut">
+    <wsdl:part name="parameters" element="tns:FulfillmentOrdersListWithHeaderResponse" />
+  </wsdl:message>
+  <wsdl:message name="FulfillmentOrdersListItemsSoapIn">
+    <wsdl:part name="parameters" element="tns:FulfillmentOrdersListItems" />
+  </wsdl:message>
+  <wsdl:message name="FulfillmentOrdersListItemsSoapOut">
+    <wsdl:part name="parameters" element="tns:FulfillmentOrdersListItemsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SprintMVNOInventorySoapIn">
+    <wsdl:part name="parameters" element="tns:SprintMVNOInventory" />
+  </wsdl:message>
+  <wsdl:message name="SprintMVNOInventorySoapOut">
+    <wsdl:part name="parameters" element="tns:SprintMVNOInventoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInventoryListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInventoryList" />
+  </wsdl:message>
+  <wsdl:message name="GetInventoryListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInventoryListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInventoryReceiptListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInventoryReceiptList" />
+  </wsdl:message>
+  <wsdl:message name="GetInventoryReceiptListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInventoryReceiptListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPurchaseOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPurchaseOrder" />
+  </wsdl:message>
+  <wsdl:message name="GetPurchaseOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPurchaseOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFulfillmentOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFulfillmentOrder" />
+  </wsdl:message>
+  <wsdl:message name="GetFulfillmentOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFulfillmentOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseOrderProvisioningSoapIn">
+    <wsdl:part name="parameters" element="tns:PurchaseOrderProvisioning" />
+  </wsdl:message>
+  <wsdl:message name="PurchaseOrderProvisioningSoapOut">
+    <wsdl:part name="parameters" element="tns:PurchaseOrderProvisioningResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckOrderShippingStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckOrderShippingStatus" />
+  </wsdl:message>
+  <wsdl:message name="CheckOrderShippingStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckOrderShippingStatusResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PurchaseOrderSoap">
+    <wsdl:operation name="SetPurchaseOrder">
+      <wsdl:input message="tns:SetPurchaseOrderSoapIn" />
+      <wsdl:output message="tns:SetPurchaseOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FulfillmentOrderUpdate">
+      <wsdl:input message="tns:FulfillmentOrderUpdateSoapIn" />
+      <wsdl:output message="tns:FulfillmentOrderUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelFulfillment">
+      <wsdl:input message="tns:CancelFulfillmentSoapIn" />
+      <wsdl:output message="tns:CancelFulfillmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setPurchaseOrderPayment">
+      <wsdl:input message="tns:setPurchaseOrderPaymentSoapIn" />
+      <wsdl:output message="tns:setPurchaseOrderPaymentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApprovedShippingMethods">
+      <wsdl:input message="tns:GetApprovedShippingMethodsSoapIn" />
+      <wsdl:output message="tns:GetApprovedShippingMethodsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetShippingCodes">
+      <wsdl:input message="tns:GetShippingCodesSoapIn" />
+      <wsdl:output message="tns:GetShippingCodesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="iv_product_stock_list">
+      <wsdl:input message="tns:iv_product_stock_listSoapIn" />
+      <wsdl:output message="tns:iv_product_stock_listSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="iv_product_stock_info">
+      <wsdl:input message="tns:iv_product_stock_infoSoapIn" />
+      <wsdl:output message="tns:iv_product_stock_infoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_ESN_Shipping_Report">
+      <wsdl:input message="tns:Get_ESN_Shipping_ReportSoapIn" />
+      <wsdl:output message="tns:Get_ESN_Shipping_ReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_RMA_Report">
+      <wsdl:input message="tns:Get_RMA_ReportSoapIn" />
+      <wsdl:output message="tns:Get_RMA_ReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FulfillmentOrdersProvisionalList">
+      <wsdl:input message="tns:FulfillmentOrdersProvisionalListSoapIn" />
+      <wsdl:output message="tns:FulfillmentOrdersProvisionalListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FulfillmentOrdersListWithHeader">
+      <wsdl:input message="tns:FulfillmentOrdersListWithHeaderSoapIn" />
+      <wsdl:output message="tns:FulfillmentOrdersListWithHeaderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FulfillmentOrdersListItems">
+      <wsdl:input message="tns:FulfillmentOrdersListItemsSoapIn" />
+      <wsdl:output message="tns:FulfillmentOrdersListItemsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SprintMVNOInventory">
+      <wsdl:input message="tns:SprintMVNOInventorySoapIn" />
+      <wsdl:output message="tns:SprintMVNOInventorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInventoryList">
+      <wsdl:input message="tns:GetInventoryListSoapIn" />
+      <wsdl:output message="tns:GetInventoryListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInventoryReceiptList">
+      <wsdl:input message="tns:GetInventoryReceiptListSoapIn" />
+      <wsdl:output message="tns:GetInventoryReceiptListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchaseOrder">
+      <wsdl:input message="tns:GetPurchaseOrderSoapIn" />
+      <wsdl:output message="tns:GetPurchaseOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFulfillmentOrder">
+      <wsdl:input message="tns:GetFulfillmentOrderSoapIn" />
+      <wsdl:output message="tns:GetFulfillmentOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurchaseOrderProvisioning">
+      <wsdl:input message="tns:PurchaseOrderProvisioningSoapIn" />
+      <wsdl:output message="tns:PurchaseOrderProvisioningSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckOrderShippingStatus">
+      <wsdl:input message="tns:CheckOrderShippingStatusSoapIn" />
+      <wsdl:output message="tns:CheckOrderShippingStatusSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PurchaseOrderSoap" type="tns:PurchaseOrderSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SetPurchaseOrder">
+      <soap:operation soapAction="http://tempuri.org/SetPurchaseOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FulfillmentOrderUpdate">
+      <soap:operation soapAction="http://tempuri.org/FulfillmentOrderUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelFulfillment">
+      <soap:operation soapAction="http://tempuri.org/CancelFulfillment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setPurchaseOrderPayment">
+      <soap:operation soapAction="http://tempuri.org/setPurchaseOrderPayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApprovedShippingMethods">
+      <soap:operation soapAction="http://tempuri.org/GetApprovedShippingMethods" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetShippingCodes">
+      <soap:operation soapAction="http://tempuri.org/GetShippingCodes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="iv_product_stock_list">
+      <soap:operation soapAction="http://tempuri.org/iv_product_stock_list" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="iv_product_stock_info">
+      <soap:operation soapAction="http://tempuri.org/iv_product_stock_info" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_ESN_Shipping_Report">
+      <soap:operation soapAction="http://tempuri.org/Get_ESN_Shipping_Report" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_RMA_Report">
+      <soap:operation soapAction="http://tempuri.org/Get_RMA_Report" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FulfillmentOrdersProvisionalList">
+      <soap:operation soapAction="http://tempuri.org/FulfillmentOrdersProvisionalList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FulfillmentOrdersListWithHeader">
+      <soap:operation soapAction="http://tempuri.org/FulfillmentOrdersListWithHeader" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FulfillmentOrdersListItems">
+      <soap:operation soapAction="http://tempuri.org/FulfillmentOrdersListItems" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SprintMVNOInventory">
+      <soap:operation soapAction="http://tempuri.org/SprintMVNOInventory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInventoryList">
+      <soap:operation soapAction="http://tempuri.org/GetInventoryList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInventoryReceiptList">
+      <soap:operation soapAction="http://tempuri.org/GetInventoryReceiptList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchaseOrder">
+      <soap:operation soapAction="http://tempuri.org/GetPurchaseOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFulfillmentOrder">
+      <soap:operation soapAction="http://tempuri.org/GetFulfillmentOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurchaseOrderProvisioning">
+      <soap:operation soapAction="http://tempuri.org/PurchaseOrderProvisioning" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckOrderShippingStatus">
+      <soap:operation soapAction="http://tempuri.org/CheckOrderShippingStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PurchaseOrderSoap12" type="tns:PurchaseOrderSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SetPurchaseOrder">
+      <soap12:operation soapAction="http://tempuri.org/SetPurchaseOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FulfillmentOrderUpdate">
+      <soap12:operation soapAction="http://tempuri.org/FulfillmentOrderUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelFulfillment">
+      <soap12:operation soapAction="http://tempuri.org/CancelFulfillment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setPurchaseOrderPayment">
+      <soap12:operation soapAction="http://tempuri.org/setPurchaseOrderPayment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApprovedShippingMethods">
+      <soap12:operation soapAction="http://tempuri.org/GetApprovedShippingMethods" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetShippingCodes">
+      <soap12:operation soapAction="http://tempuri.org/GetShippingCodes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="iv_product_stock_list">
+      <soap12:operation soapAction="http://tempuri.org/iv_product_stock_list" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="iv_product_stock_info">
+      <soap12:operation soapAction="http://tempuri.org/iv_product_stock_info" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_ESN_Shipping_Report">
+      <soap12:operation soapAction="http://tempuri.org/Get_ESN_Shipping_Report" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_RMA_Report">
+      <soap12:operation soapAction="http://tempuri.org/Get_RMA_Report" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FulfillmentOrdersProvisionalList">
+      <soap12:operation soapAction="http://tempuri.org/FulfillmentOrdersProvisionalList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FulfillmentOrdersListWithHeader">
+      <soap12:operation soapAction="http://tempuri.org/FulfillmentOrdersListWithHeader" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FulfillmentOrdersListItems">
+      <soap12:operation soapAction="http://tempuri.org/FulfillmentOrdersListItems" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SprintMVNOInventory">
+      <soap12:operation soapAction="http://tempuri.org/SprintMVNOInventory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInventoryList">
+      <soap12:operation soapAction="http://tempuri.org/GetInventoryList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInventoryReceiptList">
+      <soap12:operation soapAction="http://tempuri.org/GetInventoryReceiptList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchaseOrder">
+      <soap12:operation soapAction="http://tempuri.org/GetPurchaseOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFulfillmentOrder">
+      <soap12:operation soapAction="http://tempuri.org/GetFulfillmentOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurchaseOrderProvisioning">
+      <soap12:operation soapAction="http://tempuri.org/PurchaseOrderProvisioning" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckOrderShippingStatus">
+      <soap12:operation soapAction="http://tempuri.org/CheckOrderShippingStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PurchaseOrder">
+    <wsdl:port name="PurchaseOrderSoap" binding="tns:PurchaseOrderSoap">
+      <soap:address location="https://streamstaging.wsaportal.com/purchaseorder.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PurchaseOrderSoap12" binding="tns:PurchaseOrderSoap12">
+      <soap12:address location="https://streamstaging.wsaportal.com/purchaseorder.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
